@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://di78bcpkwtskw"]
+
+[ext_resource type="Script" uid="uid://dmltglllt64qc" path="res://stone_sprite.gd" id="1_7jryp"]
+[ext_resource type="Texture2D" uid="uid://b2evsq4yttios" path="res://assets/stones/Classic/stone1.png" id="1_ir4ys"]
+[ext_resource type="Texture2D" uid="uid://dhip02hlrajb" path="res://assets/stones/selected.png" id="4_dxu52"]
+[ext_resource type="Texture2D" uid="uid://dd425p7pb3ha5" path="res://assets/stones/locked.png" id="4_twvff"]
+
+[node name="StoneSprite" type="Control" unique_id=1838656154]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7jryp")
+
+[node name="StoneTextureRect" type="TextureRect" parent="." unique_id=549011479]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ir4ys")
+expand_mode = 1
+
+[node name="SelectionTextureRect" type="TextureRect" parent="." unique_id=464948175]
+modulate = Color(1, 1, 1, 0.2509804)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_dxu52")
+expand_mode = 1
+
+[node name="LockedTextureRect" type="TextureRect" parent="." unique_id=2134878689]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_twvff")
+expand_mode = 1
+
+[node name="TileTextureRect" type="TextureRect" parent="." unique_id=961710954]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1

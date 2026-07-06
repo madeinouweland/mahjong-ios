@@ -1,0 +1,17 @@
+# Godot import cache
+.import/
+
+# Godot 4 import cache
+.godot/
+
+# Exported builds
+export/
+exports/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
