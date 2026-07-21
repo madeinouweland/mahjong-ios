@@ -81,7 +81,7 @@ var maps := [
 	"Yin",
 ]
 
-@onready var grid := $ScrollContainer/GridContainer
+@onready var grid := $CenterContainer/ScrollContainer/GridContainer
 
 func _ready() -> void:
 	for map_name in maps:
