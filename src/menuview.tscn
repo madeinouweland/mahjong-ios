@@ -22,8 +22,17 @@ grow_vertical = 2
 texture = ExtResource("2_x55ph")
 stretch_mode = 6
 
-[node name="GridContainer" type="GridContainer" parent="." unique_id=862447793]
-layout_mode = 0
-offset_right = 40.0
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1047530998]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
 offset_bottom = 40.0
-columns = 4
+grow_horizontal = 2
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=862447793]
+layout_mode = 2
+columns = 10
