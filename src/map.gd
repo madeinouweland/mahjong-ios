@@ -1,7 +1,7 @@
 class_name Map
 
-static func create_board() -> Array[Stone]:
-	var path = "res://assets/maps/Classic.txt"
+static func create_board(mapname: String) -> Array[Stone]:
+	var path = "res://assets/maps/" + mapname + ".txt"
 	var text = FileAccess.get_file_as_string(path)
 
 	while true:

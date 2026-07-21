@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b030pk22celq0"]
+
+[ext_resource type="Script" uid="uid://crisjnv050gtv" path="res://menuview.gd" id="1_54g1r"]
+
+[node name="Menuview" type="Control" unique_id=141393510]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_54g1r")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=862447793]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 4

@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="mahjong"
-run/main_scene="res://GameView.tscn"
+run/main_scene="uid://b030pk22celq0"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/stretch_mode=0
 boot_splash/image="uid://d1gwmg4gtawci"
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=500
+
+[autoload]
+
+globals="*uid://b7qtstrylmmm8"
 
 [display]
 

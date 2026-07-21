@@ -1,5 +1,7 @@
 extends Control
 
+const MENU_SCENE := "res://menuview.tscn"
+
 var StoneSprite = preload("res://StoneSprite.tscn")
 var _geo: Geo
 var _textures := {}
@@ -11,7 +13,7 @@ func _ready() -> void:
 	_load_textures()
 	
 	_geo = Geo.new(get_viewport_rect().size)
-	var stones = Map.create_board()
+	var stones = Map.create_board(globals.selected_map)
 	stones.sort_custom(Stone.compare)
 	_game = Game.new(stones)
 	for stone in _game.stones:
@@ -93,3 +95,7 @@ func _load_textures() -> void:
 		"season-3": preload("res://assets/tiles/season-3.png"),
 		"season-4": preload("res://assets/tiles/season-4.png"),
 	}
+
+
+func _on_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file(MENU_SCENE)
