@@ -10,6 +10,9 @@ func make_move(stone: Stone) -> MoveResult:
 	var result := MoveResult.new()
 	if Map.is_stone_locked(stones, stone):
 		result.status = MoveResult.Status.BLOCKED
+	elif _selected_stone == stone:
+		result.status = MoveResult.Status.SAME_STONE
+		_selected_stone = null
 	elif _selected_stone and is_match(stone.tile, _selected_stone.tile):
 		result.status = MoveResult.Status.MATCH
 		result.stone1 = _selected_stone

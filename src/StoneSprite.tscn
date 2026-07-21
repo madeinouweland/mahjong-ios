@@ -25,7 +25,7 @@ texture = ExtResource("1_ir4ys")
 expand_mode = 1
 
 [node name="SelectionTextureRect" type="TextureRect" parent="." unique_id=464948175]
-modulate = Color(1, 1, 1, 0.2509804)
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

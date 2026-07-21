@@ -5,9 +5,11 @@
 
 [node name="Menuview" type="Control" unique_id=141393510]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_54g1r")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1354632237]
@@ -22,20 +24,17 @@ grow_vertical = 2
 texture = ExtResource("2_x55ph")
 stretch_mode = 6
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=788679636]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1047530998]
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer" unique_id=1047530998]
-custom_minimum_size = Vector2(1920, 1080)
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" unique_id=862447793]
 layout_mode = 2
-
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/ScrollContainer" unique_id=862447793]
-layout_mode = 2
-theme_override_constants/h_separation = 20
-theme_override_constants/v_separation = 20
-columns = 9
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 40
+columns = 8

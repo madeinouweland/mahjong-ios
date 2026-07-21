@@ -3,7 +3,8 @@ class_name MoveResult
 enum Status {
 	NO_MATCH,
 	MATCH,
-	BLOCKED
+	BLOCKED,
+	SAME_STONE
 }
 
 var status: Status

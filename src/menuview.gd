@@ -81,7 +81,7 @@ var maps := [
 	"Yin",
 ]
 
-@onready var grid := $CenterContainer/ScrollContainer/GridContainer
+@onready var grid := $ScrollContainer/GridContainer
 
 func _ready() -> void:
 	for map_name in maps:
@@ -116,5 +116,6 @@ func _ready() -> void:
 		grid.add_child(button)
 
 func _map_selected(map_name: String) -> void:
+	print("pietje")
 	globals.selected_map = map_name
 	get_tree().change_scene_to_file(GAME_SCENE)
