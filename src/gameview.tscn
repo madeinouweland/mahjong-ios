@@ -75,8 +75,13 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_sxgnj")
 text = "UNDO"
 
-[node name="StoneCanvas" type="Node2D" parent="HBoxContainer/MarginContainer" unique_id=343103098]
+[node name="StoneControl" type="Control" parent="HBoxContainer" unique_id=172754391]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StoneCanvas" type="Node2D" parent="HBoxContainer/StoneControl" unique_id=343103098]
 unique_name_in_owner = true
+position = Vector2(-260, 0)
 
 [node name="WonDialog" parent="." unique_id=620575824 instance=ExtResource("3_led1j")]
 unique_name_in_owner = true

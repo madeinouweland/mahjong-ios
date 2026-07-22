@@ -10,6 +10,9 @@ var _stone_sprites: Array[StoneSprite] = []
 
 func _ready() -> void:
 	_load_textures()
+	print("hbox", $HBoxContainer.size.x)
+	await get_tree().process_frames
+	print("control", $HBoxContainer/StoneControl.size.x)
 	
 	_geo = Geo.new(get_viewport_rect().size)
 	var stones = Map.create_board(globals.selected_map)
