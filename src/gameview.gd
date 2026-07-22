@@ -2,7 +2,7 @@ extends Control
 
 const MENU_SCENE := "res://menuview.tscn"
 
-var StoneSprite = preload("res://StoneSprite.tscn")
+var StoneSprite = preload("res://stonesprite.tscn")
 var _geo: Geo
 var _textures := {}
 var _game: Game
