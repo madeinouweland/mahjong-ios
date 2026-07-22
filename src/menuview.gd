@@ -87,6 +87,8 @@ func _ready() -> void:
 	print("Show Menu")
 	print("Window size: ", DisplayServer.window_get_size())
 	print("Viewport size: ", get_viewport().get_visible_rect().size)
+	print("hbox", $HBoxContainer.size.x)
+	print("scroll", $HBoxContainer/ScrollContainer.size.x)
 	var kachel = 400 + 20 + 20 + 40 + 40
 	var anzahl = int(get_viewport().get_visible_rect().size.x / kachel)
 	$%GridContainer.columns = anzahl
