@@ -46,9 +46,13 @@ func _on_stone_clicked(stone_sprite_p: StoneSprite):
 			var first_stone = Lib.first_or_null(_stone_sprites, func(s: StoneSprite): return s.stone == result.stone1)
 			first_stone.remove_stone()
 			stone_sprite_p.remove_stone()
-			# Check if gewonnen
+			
+			# Check if gewonnen or lost
 			if _game.has_won_game():
 				$%WonDialog.visible = true
+			elif _game.has_lost_game():
+				print("lost screen!!!!")
+				
 		MoveResult.Status.SAME_STONE:
 			stone_sprite_p.hide_selection()
 

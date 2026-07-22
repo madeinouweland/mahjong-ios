@@ -26,6 +26,9 @@ func make_move(stone: Stone) -> MoveResult:
 
 	return result
 	
+func undo() -> void:
+	print("maak undo")
+	
 func has_won_game() -> bool:
 	return stones.is_empty()
 
