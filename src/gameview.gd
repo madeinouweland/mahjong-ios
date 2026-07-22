@@ -19,7 +19,7 @@ func _ready() -> void:
 		var stone_sprite = StoneSprite.instantiate()
 		stone_sprite.clicked.connect(_on_stone_clicked)
 		_stone_sprites.append(stone_sprite)
-		add_child(stone_sprite)
+		$%StoneCanvas.add_child(stone_sprite)
 		stone_sprite.set_dimension(
 			Vector2(
 				_geo.board_offset.x + stone.position.x * _geo.stone_shift.x / 2 - stone.position.z * _geo.stone_size.x * .09, 
@@ -28,6 +28,8 @@ func _ready() -> void:
 			_geo.stone_size
 		)
 		stone_sprite.setup(stone, _textures[stone.tile.get_key()])
+		
+	$%WonDialog.menu_button_clicked.connect(_on_menu_button_pressed)
 
 func _on_stone_clicked(stone_sprite_p: StoneSprite):
 	var result = _game.make_move(stone_sprite_p.stone)
@@ -44,6 +46,9 @@ func _on_stone_clicked(stone_sprite_p: StoneSprite):
 			var first_stone = Lib.first_or_null(_stone_sprites, func(s: StoneSprite): return s.stone == result.stone1)
 			first_stone.remove_stone()
 			stone_sprite_p.remove_stone()
+			# Check if gewonnen
+			if _game.has_won_game():
+				$%WonDialog.visible = true
 		MoveResult.Status.SAME_STONE:
 			stone_sprite_p.hide_selection()
 

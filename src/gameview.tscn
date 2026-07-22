@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dlxjstl30jvsr" path="res://gameview.gd" id="1_8elup"]
 [ext_resource type="Texture2D" uid="uid://cmvfte377aj6m" path="res://assets/classic.jpg" id="2_8elup"]
+[ext_resource type="PackedScene" uid="uid://cqv860gjsyk61" path="res://wondialog.tscn" id="3_led1j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxgnj"]
 bg_color = Color(0.9092395, 0.32043666, 0.82612485, 1)
@@ -32,5 +33,13 @@ offset_right = 8.0
 offset_bottom = 8.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_sxgnj")
 text = "MENU"
+
+[node name="StoneCanvas" type="Node2D" parent="." unique_id=343103098]
+unique_name_in_owner = true
+
+[node name="WonDialog" parent="." unique_id=620575824 instance=ExtResource("3_led1j")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

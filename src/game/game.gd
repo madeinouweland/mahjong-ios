@@ -25,6 +25,14 @@ func make_move(stone: Stone) -> MoveResult:
 		_selected_stone = stone
 
 	return result
+	
+func has_won_game() -> bool:
+	return stones.is_empty()
+
+func has_lost_game():
+	var positions := stones.map(func(stone): return stone.position)
+	var free_stones = Map.get_free_positions(positions)
+	return free_stones.is_empty()
 
 func is_match(tile1: Tile, tile2: Tile):
 	return tile1.value == tile2.value and tile1.tile_type == tile2.tile_type
