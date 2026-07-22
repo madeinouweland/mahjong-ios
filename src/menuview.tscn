@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b030pk22celq0"]
 
 [ext_resource type="Script" uid="uid://crisjnv050gtv" path="res://menuview.gd" id="1_54g1r"]
-[ext_resource type="Texture2D" uid="uid://cmvfte377aj6m" path="res://assets/classic.jpg" id="2_x55ph"]
+[ext_resource type="Texture2D" uid="uid://dywg17pv1ul82" path="res://assets/ik.jpg" id="2_x55ph"]
 
 [node name="Menuview" type="Control" unique_id=141393510]
 layout_mode = 3
