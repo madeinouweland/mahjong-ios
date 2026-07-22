@@ -33,7 +33,11 @@ func has_won_game() -> bool:
 	return stones.is_empty()
 
 func has_lost_game():
-	var positions := stones.map(func(stone): return stone.position)
+	var positions: Array[Vector3i] = []
+
+	for stone in stones:
+		positions.append(stone.position)
+
 	var free_stones = Map.get_free_positions(positions)
 	return free_stones.is_empty()
 
