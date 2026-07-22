@@ -41,7 +41,7 @@ theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer/MarginContainer" unique_id=862447793]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 40
 theme_override_constants/v_separation = 40
-columns = 7

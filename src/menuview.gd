@@ -81,17 +81,19 @@ var maps := [
 	"Yin",
 ]
 
-@onready var grid := $ScrollContainer/MarginContainer/GridContainer
 var menu_item_scene = preload("res://menuitem.tscn")
 
 func _ready() -> void:
 	print("Show Menu")
 	print("Window size: ", DisplayServer.window_get_size())
 	print("Viewport size: ", get_viewport().get_visible_rect().size)
+	var kachel = 400 + 20 + 20 + 40 + 40
+	var anzahl = int(get_viewport().get_visible_rect().size.x / kachel)
+	$%GridContainer.columns = anzahl
 	
 	for map_name in maps:
 		var item = menu_item_scene.instantiate()
-		grid.add_child(item)
+		$%GridContainer.add_child(item)
 		item.setup(map_name)
 		item.selected.connect(_map_selected)
 		
