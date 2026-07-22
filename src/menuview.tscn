@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://crisjnv050gtv" path="res://menuview.gd" id="1_54g1r"]
 [ext_resource type="Texture2D" uid="uid://cmvfte377aj6m" path="res://assets/classic.jpg" id="2_x55ph"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x55ph"]
-bg_color = Color(0.65596753, 0.517978, 0.87457514, 1)
-
 [node name="Menuview" type="Control" unique_id=141393510]
 layout_mode = 3
 anchors_preset = 15
@@ -43,12 +40,8 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/MarginContainer" unique_id=446970163]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_x55ph")
-
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer/MarginContainer/PanelContainer" unique_id=862447793]
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/MarginContainer" unique_id=862447793]
 layout_mode = 2
 theme_override_constants/h_separation = 40
 theme_override_constants/v_separation = 40
-columns = 8
+columns = 7

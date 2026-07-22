@@ -81,7 +81,8 @@ var maps := [
 	"Yin",
 ]
 
-@onready var grid := $ScrollContainer/MarginContainer/PanelContainer/GridContainer
+@onready var grid := $ScrollContainer/MarginContainer/GridContainer
+var menu_item_scene = preload("res://menuitem.tscn")
 
 func _ready() -> void:
 	print("Show Menu")
@@ -89,36 +90,11 @@ func _ready() -> void:
 	print("Viewport size: ", get_viewport().get_visible_rect().size)
 	
 	for map_name in maps:
-		var button := Button.new()
-		button.custom_minimum_size = Vector2(180, 180)
-
-		var vbox := VBoxContainer.new()
-		vbox.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-		button.add_child(vbox)
-
-		var image := TextureRect.new()
-		image.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
-		image.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		image.custom_minimum_size = Vector2(160, 120)
-
-		var thumbnail_path = "res://assets/thumbnails/" + map_name + ".png"
-
-		if ResourceLoader.exists(thumbnail_path):
-			image.texture = load(thumbnail_path)
-
-		vbox.add_child(image)
-
-		var label := Label.new()
-		label.text = map_name.get_basename()
-		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		vbox.add_child(label)
-
-		button.pressed.connect(func():
-			_map_selected(map_name)
-		)
-
-		grid.add_child(button)
-
+		var item = menu_item_scene.instantiate()
+		grid.add_child(item)
+		item.setup(map_name)
+		item.selected.connect(_map_selected)
+		
 func _map_selected(map_name: String) -> void:
 	print("pietje")
 	globals.selected_map = map_name

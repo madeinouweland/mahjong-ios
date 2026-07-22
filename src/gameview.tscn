@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dlxjstl30jvsr" path="res://gameview.gd" id="1_8elup"]
 [ext_resource type="Texture2D" uid="uid://cmvfte377aj6m" path="res://assets/classic.jpg" id="2_8elup"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxgnj"]
+bg_color = Color(0.9092395, 0.32043666, 0.82612485, 1)
+
 [node name="Root" type="Control" unique_id=1287289016]
 layout_mode = 3
 anchors_preset = 15
@@ -27,6 +30,7 @@ custom_minimum_size = Vector2(200, 100)
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_sxgnj")
 text = "MENU"
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

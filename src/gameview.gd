@@ -8,7 +8,6 @@ var _textures := {}
 var _game: Game
 var _stone_sprites: Array[StoneSprite] = []
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_load_textures()
 	
@@ -48,8 +47,6 @@ func _on_stone_clicked(stone_sprite_p: StoneSprite):
 		MoveResult.Status.SAME_STONE:
 			stone_sprite_p.hide_selection()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 	
@@ -98,7 +95,6 @@ func _load_textures() -> void:
 		"season-3": preload("res://assets/tiles/season-3.png"),
 		"season-4": preload("res://assets/tiles/season-4.png"),
 	}
-
 
 func _on_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file(MENU_SCENE)
