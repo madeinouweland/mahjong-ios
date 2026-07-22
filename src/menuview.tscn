@@ -25,7 +25,6 @@ texture = ExtResource("2_x55ph")
 stretch_mode = 6
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1047530998]
-custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
