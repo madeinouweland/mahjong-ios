@@ -84,6 +84,10 @@ var maps := [
 @onready var grid := $ScrollContainer/GridContainer
 
 func _ready() -> void:
+	print("Show Menu")
+	print("Window size: ", DisplayServer.window_get_size())
+	print("Viewport size: ", get_viewport().get_visible_rect().size)
+	
 	for map_name in maps:
 		var button := Button.new()
 		button.custom_minimum_size = Vector2(180, 180)
