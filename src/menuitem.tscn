@@ -16,6 +16,7 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [node name="MenuItem" type="PanelContainer" unique_id=194747718]
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_xm8ic")
 script = ExtResource("1_sxgnj")
 

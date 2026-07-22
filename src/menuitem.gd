@@ -5,6 +5,10 @@ extends PanelContainer
 
 signal selected(map_name: String)
 var _map_name: String
+var press_position := Vector2.ZERO
+var cancelled := false
+
+const DRAG_THRESHOLD := 20.0
 
 func setup(map_name: String) -> void:
 	_map_name = map_name
@@ -17,10 +21,15 @@ func setup(map_name: String) -> void:
 		image.texture = load(thumbnail_path)
 
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			selected.emit(_map_name)
-
 	if event is InputEventScreenTouch:
 		if event.pressed:
-			selected.emit(_map_name)
+			press_position = event.position
+			cancelled = false
+		else:
+			if not cancelled:
+				selected.emit(_map_name)
+
+	elif event is InputEventScreenDrag:
+		if press_position.distance_to(event.position) > DRAG_THRESHOLD:
+			cancelled = true
+				
