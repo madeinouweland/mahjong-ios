@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://di78bcpkwtskw"]
 
-[ext_resource type="Script" uid="uid://dmltglllt64qc" path="res://stonesprite.gd" id="1_7jryp"]
+[ext_resource type="Script" uid="uid://dmltglllt64qc" path="res://stone_sprite.gd" id="1_7jryp"]
 [ext_resource type="Texture2D" uid="uid://b2evsq4yttios" path="res://assets/stones/Classic/stone1.png" id="1_ir4ys"]
 [ext_resource type="Texture2D" uid="uid://dhip02hlrajb" path="res://assets/stones/selected.png" id="4_dxu52"]
 [ext_resource type="Texture2D" uid="uid://dd425p7pb3ha5" path="res://assets/stones/locked.png" id="4_twvff"]
