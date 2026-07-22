@@ -12,11 +12,8 @@ const DRAG_THRESHOLD := 20.0
 
 func setup(map_name: String) -> void:
 	_map_name = map_name
-	#print(get_tree_string_pretty())
 	label.text = map_name
-
 	var thumbnail_path = "res://assets/thumbnails/" + map_name + ".png"
-
 	if ResourceLoader.exists(thumbnail_path):
 		image.texture = load(thumbnail_path)
 
