@@ -32,16 +32,17 @@ func _ready() -> void:
 
 func _on_stone_clicked(stone_sprite_p: StoneSprite):
 	var result = _game.make_move(stone_sprite_p.stone)
-	for sprite in _stone_sprites:
-		sprite.hide_selection()
 		
 	match result.status:
 		MoveResult.Status.NO_MATCH:
+			if result.stone1:
+				var first_stone = Lib.first_or_null(_stone_sprites, func(s: StoneSprite): return s.stone == result.stone1)
+				first_stone.hide_selection()
 			stone_sprite_p.show_selection()
 		MoveResult.Status.BLOCKED:
-			stone_sprite_p.show_locked()
+			stone_sprite_p.show_blocked()
 		MoveResult.Status.MATCH:
-			var first_stone = Lib.first(_stone_sprites, func(s: StoneSprite): return s.stone == result.stone1)
+			var first_stone = Lib.first_or_null(_stone_sprites, func(s: StoneSprite): return s.stone == result.stone1)
 			first_stone.remove_stone()
 			stone_sprite_p.remove_stone()
 		MoveResult.Status.SAME_STONE:

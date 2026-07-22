@@ -23,7 +23,7 @@ func show_selection() -> void:
 func hide_selection() -> void:
 	$SelectionTextureRect.visible = false
 
-func show_locked() -> void:
+func show_blocked() -> void:
 	$LockedTextureRect.visible = true
 	$LockedTextureRect.modulate.a = 0.0
 

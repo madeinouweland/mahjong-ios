@@ -39,8 +39,17 @@ static func is_stone_locked(stones: Array[Stone], stone: Stone) -> bool:
 	if has_position_above(occupied, stone.position):
 		return true
 
-	var left := occupied.has(stone.position + Vector3i(-2, 0, 0))
-	var right := occupied.has(stone.position + Vector3i(2, 0, 0))
+	var left := (
+		occupied.has(stone.position + Vector3i(-2, 0, 0)) or
+		occupied.has(stone.position + Vector3i(-2, 1, 0)) or
+		occupied.has(stone.position + Vector3i(-2, -1, 0))
+	)
+
+	var right := (
+		occupied.has(stone.position + Vector3i(2, 0, 0)) or
+		occupied.has(stone.position + Vector3i(2, 1, 0)) or
+		occupied.has(stone.position + Vector3i(2, -1, 0))
+	)
 
 	return left and right
 		

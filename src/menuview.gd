@@ -81,7 +81,7 @@ var maps := [
 	"Yin",
 ]
 
-@onready var grid := $ScrollContainer/GridContainer
+@onready var grid := $ScrollContainer/MarginContainer/PanelContainer/GridContainer
 
 func _ready() -> void:
 	print("Show Menu")

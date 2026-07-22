@@ -21,6 +21,7 @@ func make_move(stone: Stone) -> MoveResult:
 		_selected_stone = null
 	else:
 		result.status = MoveResult.Status.NO_MATCH
+		result.stone1 = _selected_stone
 		_selected_stone = stone
 
 	return result
