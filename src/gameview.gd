@@ -14,7 +14,7 @@ func _ready() -> void:
 	_create_sprites()	
 		
 	$%WonDialog.menu_button_clicked.connect(_on_menu_button_pressed)
-	
+	$%TextureButtonMenu.pressed.connect(_on_menu_button_pressed)
 	
 func _create_sprites():
 	_geo = Geo.new($%StoneControl.size)
