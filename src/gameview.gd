@@ -10,11 +10,15 @@ var _stone_sprites: Array[StoneSprite] = []
 
 func _ready() -> void:
 	_load_textures()
-	print("hbox", $HBoxContainer.size.x)
-	await get_tree().process_frames
-	print("control", $HBoxContainer/StoneControl.size.x)
+	await get_tree().process_frame
+	_create_sprites()	
+		
+	$%WonDialog.menu_button_clicked.connect(_on_menu_button_pressed)
 	
-	_geo = Geo.new(get_viewport_rect().size)
+	
+func _create_sprites():
+	_geo = Geo.new($%StoneControl.size)
+	
 	var stones = Map.create_board(globals.selected_map)
 	stones.sort_custom(Stone.compare)
 	_game = Game.new(stones)
@@ -31,8 +35,6 @@ func _ready() -> void:
 			_geo.stone_size
 		)
 		stone_sprite.setup(stone, _textures[stone.tile.get_key()])
-		
-	$%WonDialog.menu_button_clicked.connect(_on_menu_button_pressed)
 
 func _on_stone_clicked(stone_sprite_p: StoneSprite):
 	var result = _game.make_move(stone_sprite_p.stone)

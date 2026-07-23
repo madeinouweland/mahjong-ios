@@ -2,17 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dlxjstl30jvsr" path="res://gameview.gd" id="1_8elup"]
 [ext_resource type="Texture2D" uid="uid://dywg17pv1ul82" path="res://assets/ik.jpg" id="2_led1j"]
+[ext_resource type="Texture2D" uid="uid://dhv1nnxek2mf3" path="res://assets/BackButton.png" id="3_8tpxn"]
 [ext_resource type="PackedScene" uid="uid://cqv860gjsyk61" path="res://wondialog.tscn" id="3_led1j"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xm8ic"]
-bg_color = Color(0, 0, 0, 0.6627451)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxgnj"]
-bg_color = Color(0.3265973, 0.62776244, 0.41149133, 1)
+[ext_resource type="Script" uid="uid://ds8fcpjb503sx" path="res://button.gd" id="4_fxddu"]
+[ext_resource type="Texture2D" uid="uid://gc4ioq6a7crt" path="res://assets/UndoButton.png" id="4_ka63k"]
 
 [node name="Root" type="Control" unique_id=1287289016]
 layout_mode = 3
@@ -33,7 +26,61 @@ grow_vertical = 2
 texture = ExtResource("2_led1j")
 stretch_mode = 6
 
+[node name="StoneControl" type="Control" parent="." unique_id=172754391]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 260.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+
+[node name="StoneCanvas" type="Node2D" parent="StoneControl" unique_id=343103098]
+unique_name_in_owner = true
+
+[node name="MarginContainerMenu" type="MarginContainer" parent="." unique_id=1876677456]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 1
+offset_right = 176.0
+offset_bottom = 176.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TextureButtonMenu" type="TextureButton" parent="MarginContainerMenu" unique_id=1739671897]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+texture_normal = ExtResource("3_8tpxn")
+ignore_texture_size = true
+stretch_mode = 6
+script = ExtResource("4_fxddu")
+
+[node name="MarginContainerUndo" type="MarginContainer" parent="." unique_id=2084777253]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -176.0
+offset_bottom = 176.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TextureButtonUndo" type="TextureButton" parent="MarginContainerUndo" unique_id=1543852633]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+texture_normal = ExtResource("4_ka63k")
+ignore_texture_size = true
+stretch_mode = 6
+script = ExtResource("4_fxddu")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1015923285]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,53 +88,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1876677456]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer" unique_id=1902930518]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_xm8ic")
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/MarginContainer/PanelContainer" unique_id=325133505]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=205209504]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="MenuButton" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2019423386]
-custom_minimum_size = Vector2(200, 100)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_sxgnj")
-text = "MENU"
-
-[node name="UndoButton" type="Button" parent="HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1081846703]
-custom_minimum_size = Vector2(200, 100)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_sxgnj")
-text = "UNDO"
-
-[node name="StoneControl" type="Control" parent="HBoxContainer" unique_id=172754391]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="StoneCanvas" type="Node2D" parent="HBoxContainer/StoneControl" unique_id=343103098]
-unique_name_in_owner = true
-position = Vector2(-260, 0)
-
 [node name="WonDialog" parent="." unique_id=620575824 instance=ExtResource("3_led1j")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_right = 28.0
-
-[connection signal="pressed" from="HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
+grow_horizontal = 1
+grow_vertical = 1
