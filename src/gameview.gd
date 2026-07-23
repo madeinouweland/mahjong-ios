@@ -44,6 +44,10 @@ func _create_sprites(stones):
 		stone_sprite.setup(stone, _textures[stone.tile.get_key()])
 
 func _on_stone_clicked(stone_sprite_p: StoneSprite):
+	""" Handle stone sprite click.
+		- make the move in the game class
+		- match the result
+	"""
 	var result = _game.make_move(stone_sprite_p.stone)
 		
 	match result.status:
@@ -61,9 +65,9 @@ func _on_stone_clicked(stone_sprite_p: StoneSprite):
 			first_stone.hide_selection()
 			stone_sprite_p.hide_selection()
 			# Check if gewonnen or lost
-			if _game.has_won_game():
+			if _game.stones.size() == 0:  # Board is empty. Game has been won.
 				$%WonDialog.visible = true
-			elif _game.has_lost_game():
+			elif _game.get_possible_moves().size() == 0:
 				$%LostDialog.visible = true
 				
 		MoveResult.Status.SAME_STONE:

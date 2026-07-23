@@ -36,17 +36,28 @@ func undo() -> Move:
 	stones.append(move.stone_b)
 	return move
 
-func has_won_game() -> bool:
-	return stones.is_empty()
-
-func has_lost_game():
-	var positions: Array[Vector3i] = []
-
+func get_possible_moves() -> Array:
+	"""Go through free stones and return list of moves."""
+	var free_stones: Array[Stone] = []
 	for stone in stones:
-		positions.append(stone.position)
+		if !Map.is_stone_locked(stones, stone):
+			free_stones.append(stone)
 
-	var free_stones = Map.get_free_positions(positions)
-	return free_stones.size() < 2
+	var groups: Dictionary = {}
+	for stone in free_stones:
+		var key := "%s_%s" % [stone.tile.tile_type, stone.tile.value]
+
+		if !groups.has(key):
+			groups[key] = []
+
+		groups[key].append(stone)
+
+	var moves: Array = []
+	for group in groups.values():
+		if group.size() >= 2:
+			moves.append(group)
+
+	return moves
 
 func is_match(tile1: Tile, tile2: Tile):
 	return tile1.value == tile2.value and tile1.tile_type == tile2.tile_type
