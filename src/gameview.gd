@@ -58,7 +58,8 @@ func _on_stone_clicked(stone_sprite_p: StoneSprite):
 			var first_stone = Lib.first_or_null(_stone_sprites, func(s: StoneSprite): return s.stone == result.stone1)
 			first_stone.remove_stone()
 			stone_sprite_p.remove_stone()
-			
+			first_stone.hide_selection()
+			stone_sprite_p.hide_selection()
 			# Check if gewonnen or lost
 			if _game.has_won_game():
 				$%WonDialog.visible = true
@@ -73,13 +74,12 @@ func _on_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file(MENU_SCENE)
 
 func _on_undo_button_pressed() -> void:
-	print("MAKE UNDO")
-
-
-
-
-
-
+	var move: Move = _game.undo()
+	if move:
+		var first_stone = Lib.first_or_null(_stone_sprites, func(s: StoneSprite): return s.stone == move.stone_a)
+		first_stone.show_stone()
+		var first_stone2 = Lib.first_or_null(_stone_sprites, func(s: StoneSprite): return s.stone == move.stone_b)
+		first_stone2.show_stone()
 
 
 

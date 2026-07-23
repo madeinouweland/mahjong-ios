@@ -2,6 +2,7 @@ class_name Game
 
 var stones: Array[Stone]
 var _selected_stone: Stone
+var undo_stack: Array[Move] = []
 
 func _init(stones_p: Array[Stone]) -> void:
 	stones = stones_p
@@ -15,6 +16,7 @@ func make_move(stone: Stone) -> MoveResult:
 		_selected_stone = null
 	elif _selected_stone and is_match(stone.tile, _selected_stone.tile):
 		result.status = MoveResult.Status.MATCH
+		undo_stack.push_back(Move.new(stone, _selected_stone))
 		result.stone1 = _selected_stone
 		stones.erase(_selected_stone)
 		stones.erase(stone)
@@ -26,9 +28,14 @@ func make_move(stone: Stone) -> MoveResult:
 
 	return result
 	
-func undo() -> void:
-	print("maak undo")
-	
+func undo() -> Move:
+	if undo_stack.is_empty():
+		return
+	var move: Move = undo_stack.pop_back()
+	stones.append(move.stone_a)
+	stones.append(move.stone_b)
+	return move
+
 func has_won_game() -> bool:
 	return stones.is_empty()
 

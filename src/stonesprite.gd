@@ -62,7 +62,32 @@ func remove_stone() -> void:
 	# Reset in case this node is reused.
 	scale = Vector2.ONE
 	modulate.a = 1.0
-	mouse_filter = Control.MOUSE_FILTER_STOP	
+	mouse_filter = Control.MOUSE_FILTER_STOP
+
+func show_stone() -> void:
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+	visible = true
+
+	# Start hidden
+	scale = Vector2.ZERO
+	modulate.a = 0.0
+
+	var tween := create_tween()
+	tween.set_parallel(true)
+
+	tween.tween_property(self, "scale", Vector2.ONE, 0.2) \
+		.set_trans(Tween.TRANS_CUBIC) \
+		.set_ease(Tween.EASE_OUT)
+
+	tween.tween_property(self, "modulate:a", 1.0, 0.2) \
+		.set_trans(Tween.TRANS_CUBIC) \
+		.set_ease(Tween.EASE_OUT)
+
+	await tween.finished
+
+	mouse_filter = Control.MOUSE_FILTER_STOP
+	
 func _gui_input(event):
 	if event is InputEventMouseButton \
 	and event.button_index == MOUSE_BUTTON_LEFT \
