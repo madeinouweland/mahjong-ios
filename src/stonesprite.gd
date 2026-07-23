@@ -26,20 +26,10 @@ func hide_selection() -> void:
 func show_blocked() -> void:
 	$LockedTextureRect.visible = true
 	$LockedTextureRect.modulate.a = 0.0
-
 	var tween = create_tween()
-
-	tween.tween_property($LockedTextureRect, "modulate:a", 1.0, 0.12) \
-		.set_trans(Tween.TRANS_QUAD) \
-		.set_ease(Tween.EASE_OUT)
-
-	tween.tween_property($LockedTextureRect, "modulate:a", 0.0, 0.25) \
-		.set_trans(Tween.TRANS_QUAD) \
-		.set_ease(Tween.EASE_IN)
-
-	tween.finished.connect(func():
-		$LockedTextureRect.visible = false
-	)
+	tween.tween_property($LockedTextureRect, "modulate:a", 1.0, 0.12).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property($LockedTextureRect, "modulate:a", 0.0, 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	tween.finished.connect(func(): $LockedTextureRect.visible = false)
 
 func remove_stone() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
