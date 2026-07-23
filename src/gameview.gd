@@ -72,7 +72,6 @@ func _on_stone_clicked(stone_sprite_p: StoneSprite):
 		MoveResult.Status.SAME_STONE:
 			stone_sprite_p.hide_selection()
 
-
 func _on_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file(MENU_SCENE)
 
