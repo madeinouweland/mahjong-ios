@@ -39,7 +39,7 @@ func has_lost_game():
 		positions.append(stone.position)
 
 	var free_stones = Map.get_free_positions(positions)
-	return free_stones.is_empty()
+	return free_stones.size() < 2
 
 func is_match(tile1: Tile, tile2: Tile):
 	return tile1.value == tile2.value and tile1.tile_type == tile2.tile_type

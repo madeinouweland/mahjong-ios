@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://c8wtah5klpnqo"]
 
 [ext_resource type="Script" uid="uid://dlxjstl30jvsr" path="res://gameview.gd" id="1_8elup"]
+[ext_resource type="Theme" uid="uid://dhmy3g08m6rk6" path="res://mahjongtheme.tres" id="1_laeyd"]
 [ext_resource type="Texture2D" uid="uid://dywg17pv1ul82" path="res://assets/ik.jpg" id="2_led1j"]
 [ext_resource type="Texture2D" uid="uid://dhv1nnxek2mf3" path="res://assets/BackButton.png" id="3_8tpxn"]
 [ext_resource type="PackedScene" uid="uid://cqv860gjsyk61" path="res://wondialog.tscn" id="3_led1j"]
 [ext_resource type="Script" uid="uid://ds8fcpjb503sx" path="res://button.gd" id="4_fxddu"]
 [ext_resource type="Texture2D" uid="uid://gc4ioq6a7crt" path="res://assets/UndoButton.png" id="4_ka63k"]
+[ext_resource type="PackedScene" uid="uid://drytjgkg0ir1k" path="res://lostdialog.tscn" id="7_rdjbg"]
 
 [node name="Root" type="Control" unique_id=1287289016]
 layout_mode = 3
@@ -14,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_laeyd")
 script = ExtResource("1_8elup")
 
 [node name="Background" type="TextureRect" parent="." unique_id=622207913]
@@ -82,10 +85,9 @@ script = ExtResource("4_fxddu")
 [node name="WonDialog" parent="." unique_id=620575824 instance=ExtResource("3_led1j")]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 28.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
+
+[node name="LostDialog" parent="." unique_id=1361935070 instance=ExtResource("7_rdjbg")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1

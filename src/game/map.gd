@@ -30,6 +30,15 @@ static func create_board(mapname: String) -> Array[Stone]:
 	# fallback to satisfy compiler (never realistically reached)
 	return []
 	
+static func create_test_board() -> Array[Stone]:
+	var pairs = create_tile_pairs()
+	var stones: Array[Stone] = []
+	stones.append(Stone.new(pairs[0][0], Vector3i(10, 4, 1)))
+	stones.append(Stone.new(pairs[0][1], Vector3i(12, 4, 1)))
+	stones.append(Stone.new(pairs[1][0], Vector3i(14, 4, 1)))
+	stones.append(Stone.new(pairs[1][1], Vector3i(12, 4, 2)))
+	return stones
+	
 static func is_stone_locked(stones: Array[Stone], stone: Stone) -> bool:
 	var occupied: Dictionary = {}
 

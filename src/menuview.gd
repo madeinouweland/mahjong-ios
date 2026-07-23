@@ -94,6 +94,12 @@ func _ready() -> void:
 		item.setup(map_name)
 		item.selected.connect(_map_selected)
 		
+	$%TestButton.pressed.connect(_test_game)
+
+func _test_game():
+	globals.selected_map = "TEST"
+	get_tree().change_scene_to_file(GAME_SCENE)
+		
 func _map_selected(map_name: String) -> void:
 	globals.selected_map = map_name
 	get_tree().change_scene_to_file(GAME_SCENE)

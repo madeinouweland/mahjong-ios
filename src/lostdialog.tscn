@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://cqv860gjsyk61"]
+[gd_scene format=3 uid="uid://drytjgkg0ir1k"]
 
-[ext_resource type="Script" uid="uid://c5gfy1vu4mxjm" path="res://wondialog.gd" id="1_6mthc"]
+[ext_resource type="Script" uid="uid://ct7ml1p8c6mj6" path="res://lostdialog.gd" id="1_2s0sq"]
+[ext_resource type="FontFile" uid="uid://c7md0wdsjn124" path="res://assets/go3v2.ttf" id="2_0twse"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xm8ic"]
 bg_color = Color(0.13333334, 0.13333334, 0.13333334, 1)
@@ -13,17 +14,13 @@ corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
-[sub_resource type="Theme" id="Theme_0twse"]
-
-[sub_resource type="Theme" id="Theme_8kt5b"]
-
 [node name="Root" type="PanelContainer" unique_id=620575824]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_6mthc")
+script = ExtResource("1_2s0sq")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1946593296]
 layout_mode = 2
@@ -41,19 +38,16 @@ theme_override_constants/margin_bottom = 12
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1558711391]
 layout_mode = 2
-theme = SubResource("Theme_0twse")
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1670712667]
 layout_mode = 2
-theme = SubResource("Theme_8kt5b")
 theme_override_font_sizes/font_size = 48
-text = "Congratulations!
-you have won the game"
-horizontal_alignment = 1
+text = "Du haben verloren, sukkel!"
 
 [node name="MenuButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=711336175]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0twse")
 theme_override_font_sizes/font_size = 48
 text = "MENU"

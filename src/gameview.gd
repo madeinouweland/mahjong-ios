@@ -11,15 +11,22 @@ var _stone_sprites: Array[StoneSprite] = []
 func _ready() -> void:
 	_load_textures()
 	await get_tree().process_frame
-	_create_sprites()	
+	
+	if globals.selected_map == "TEST":
+		var stones = Map.create_test_board()
+		_create_sprites(stones)	
+	else:
+		var stones = Map.create_board(globals.selected_map)
+		_create_sprites(stones)	
 		
 	$%WonDialog.menu_button_clicked.connect(_on_menu_button_pressed)
+	$%LostDialog.menu_button_clicked.connect(_on_menu_button_pressed)
 	$%TextureButtonMenu.pressed.connect(_on_menu_button_pressed)
+	$%TextureButtonUndo.pressed.connect(_on_undo_button_pressed)
 	
-func _create_sprites():
+func _create_sprites(stones):
 	_geo = Geo.new($%StoneControl.size)
 	
-	var stones = Map.create_board(globals.selected_map)
 	stones.sort_custom(Stone.compare)
 	_game = Game.new(stones)
 	for stone in _game.stones:
@@ -56,14 +63,31 @@ func _on_stone_clicked(stone_sprite_p: StoneSprite):
 			if _game.has_won_game():
 				$%WonDialog.visible = true
 			elif _game.has_lost_game():
-				print("lost screen!!!!")
+				$%LostDialog.visible = true
 				
 		MoveResult.Status.SAME_STONE:
 			stone_sprite_p.hide_selection()
 
-func _process(delta: float) -> void:
-	pass
-	
+
+func _on_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file(MENU_SCENE)
+
+func _on_undo_button_pressed() -> void:
+	print("MAKE UNDO")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 func _load_textures() -> void:
 	_textures = {
 		"bamboo-1": preload("res://assets/tiles/bamboo-1.png"),
@@ -109,6 +133,3 @@ func _load_textures() -> void:
 		"season-3": preload("res://assets/tiles/season-3.png"),
 		"season-4": preload("res://assets/tiles/season-4.png"),
 	}
-
-func _on_menu_button_pressed() -> void:
-	get_tree().change_scene_to_file(MENU_SCENE)
