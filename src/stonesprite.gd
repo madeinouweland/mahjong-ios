@@ -33,20 +33,11 @@ func show_blocked() -> void:
 
 func remove_stone() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-
 	var tween := create_tween()
 	tween.set_parallel(true)
-
-	tween.tween_property(self, "scale", Vector2.ZERO, 0.2) \
-		.set_trans(Tween.TRANS_CUBIC) \
-		.set_ease(Tween.EASE_IN)
-
-	tween.tween_property(self, "modulate:a", 0.0, 0.2) \
-		.set_trans(Tween.TRANS_CUBIC) \
-		.set_ease(Tween.EASE_IN)
-
+	tween.tween_property(self, "scale", Vector2.ZERO, 0.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
+	tween.tween_property(self, "modulate:a", 0.0, 0.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	await tween.finished
-
 	visible = false
 
 	# Reset in case this node is reused.
@@ -56,7 +47,6 @@ func remove_stone() -> void:
 
 func show_stone() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-
 	visible = true
 
 	# Start hidden
@@ -66,13 +56,8 @@ func show_stone() -> void:
 	var tween := create_tween()
 	tween.set_parallel(true)
 
-	tween.tween_property(self, "scale", Vector2.ONE, 0.2) \
-		.set_trans(Tween.TRANS_CUBIC) \
-		.set_ease(Tween.EASE_OUT)
-
-	tween.tween_property(self, "modulate:a", 1.0, 0.2) \
-		.set_trans(Tween.TRANS_CUBIC) \
-		.set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "scale", Vector2.ONE, 0.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "modulate:a", 1.0, 0.2).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 	await tween.finished
 

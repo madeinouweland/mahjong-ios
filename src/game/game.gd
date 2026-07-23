@@ -46,13 +46,13 @@ func board_is_empty() -> bool:
 
 func get_possible_moves() -> Array:
 	"""Go through free _stones and return list of moves."""
-	var free__stones: Array[Stone] = []
+	var free_stones: Array[Stone] = []
 	for stone in _stones:
 		if !Map.is_stone_locked(_stones, stone):
-			free__stones.append(stone)
+			free_stones.append(stone)
 
 	var groups: Dictionary = {}
-	for stone in free__stones:
+	for stone in free_stones:
 		var key := "%s_%s" % [stone.tile.tile_type, stone.tile.value]
 
 		if !groups.has(key):
