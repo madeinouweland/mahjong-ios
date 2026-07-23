@@ -1,25 +1,30 @@
 class_name Game
 
-var stones: Array[Stone]
+var _stones: Array[Stone]
 var _selected_stone: Stone
-var undo_stack: Array[Move] = []
+var _undos: Array[Move] = []
 
-func _init(stones_p: Array[Stone]) -> void:
-	stones = stones_p
+func _init(_stones_p: Array[Stone]) -> void:
+	_stones = _stones_p
 	
 func make_move(stone: Stone) -> MoveResult:
+	"""
+	Make a move with the stone from the clicked sprite. 
+	Return a MoveResult that has BLOCKED/SAME_STONE/MATCH/NO_MATCH.
+	In case of a match, MoveResult also contains the previously clicked stone it was used to match the new stone to.
+	"""
 	var result := MoveResult.new()
-	if Map.is_stone_locked(stones, stone):
+	if Map.is_stone_locked(_stones, stone):
 		result.status = MoveResult.Status.BLOCKED
 	elif _selected_stone == stone:
 		result.status = MoveResult.Status.SAME_STONE
 		_selected_stone = null
 	elif _selected_stone and is_match(stone.tile, _selected_stone.tile):
 		result.status = MoveResult.Status.MATCH
-		undo_stack.push_back(Move.new(stone, _selected_stone))
+		_undos.push_back(Move.new(stone, _selected_stone))
 		result.stone1 = _selected_stone
-		stones.erase(_selected_stone)
-		stones.erase(stone)
+		_stones.erase(_selected_stone)
+		_stones.erase(stone)
 		_selected_stone = null
 	else:
 		result.status = MoveResult.Status.NO_MATCH
@@ -29,22 +34,25 @@ func make_move(stone: Stone) -> MoveResult:
 	return result
 	
 func undo() -> Move:
-	if undo_stack.is_empty():
+	if _undos.is_empty():
 		return
-	var move: Move = undo_stack.pop_back()
-	stones.append(move.stone_a)
-	stones.append(move.stone_b)
+	var move: Move = _undos.pop_back()
+	_stones.append(move.stone_a)
+	_stones.append(move.stone_b)
 	return move
 
+func board_is_empty() -> bool:
+	return _stones.is_empty()
+
 func get_possible_moves() -> Array:
-	"""Go through free stones and return list of moves."""
-	var free_stones: Array[Stone] = []
-	for stone in stones:
-		if !Map.is_stone_locked(stones, stone):
-			free_stones.append(stone)
+	"""Go through free _stones and return list of moves."""
+	var free__stones: Array[Stone] = []
+	for stone in _stones:
+		if !Map.is_stone_locked(_stones, stone):
+			free__stones.append(stone)
 
 	var groups: Dictionary = {}
-	for stone in free_stones:
+	for stone in free__stones:
 		var key := "%s_%s" % [stone.tile.tile_type, stone.tile.value]
 
 		if !groups.has(key):

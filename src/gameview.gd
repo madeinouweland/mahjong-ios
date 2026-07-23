@@ -26,10 +26,9 @@ func _ready() -> void:
 	
 func _create_sprites(stones):
 	_geo = Geo.new($%StoneControl.size)
-	
 	stones.sort_custom(Stone.compare)
 	_game = Game.new(stones)
-	for stone in _game.stones:
+	for stone in stones:
 		var stone_sprite = StoneSprite.instantiate()
 		stone_sprite.clicked.connect(_on_stone_clicked)
 		_stone_sprites.append(stone_sprite)
@@ -65,7 +64,7 @@ func _on_stone_clicked(stone_sprite_p: StoneSprite):
 			first_stone.hide_selection()
 			stone_sprite_p.hide_selection()
 			# Check if gewonnen or lost
-			if _game.stones.size() == 0:  # Board is empty. Game has been won.
+			if _game.board_is_empty():  # Board is empty. Game has been won.
 				$%WonDialog.visible = true
 			elif _game.get_possible_moves().size() == 0:
 				$%LostDialog.visible = true
