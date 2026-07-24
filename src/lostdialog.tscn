@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://drytjgkg0ir1k"]
 
 [ext_resource type="Script" uid="uid://ct7ml1p8c6mj6" path="res://lostdialog.gd" id="1_2s0sq"]
-[ext_resource type="FontFile" uid="uid://c7md0wdsjn124" path="res://assets/go3v2.ttf" id="2_0twse"]
+[ext_resource type="Theme" uid="uid://dhmy3g08m6rk6" path="res://mahjongtheme.tres" id="1_8kt5b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xm8ic"]
 bg_color = Color(0.13333334, 0.13333334, 0.13333334, 1)
@@ -20,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_8kt5b")
 script = ExtResource("1_2s0sq")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1946593296]
@@ -41,13 +42,10 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1670712667]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
 text = "Du haben verloren, sukkel!"
 
 [node name="MenuButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=711336175]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_0twse")
-theme_override_font_sizes/font_size = 48
 text = "MENU"
